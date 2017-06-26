@@ -1,0 +1,38 @@
+html,body{
+	height: 100%;
+	width: 100%;
+}
+
+body{
+	background-color: #00AE8D;
+	font-family: 'Montserrat', sans-serif;
+}
+
+div.olin{
+	background-color: #00AE8D;
+	color: #fff;
+	height: 100%;
+	text-align: center;
+	padding-top: 10%
+}
+
+
+div.formRegister
+{
+	padding-top: 5%;
+	background-color: #fff;
+	height: 100%;
+	color:#00AE8D;
+}
+
+div.formRegister h3
+{
+	text-align: center;
+	text-shadow: 1px 1px 2px #afafaf;
+}
+
+
+div.altura{
+	height: 100%;
+}
+
