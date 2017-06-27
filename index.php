@@ -11,6 +11,16 @@ $app = new \Slim\Slim(array(
 
 
 
+
+$admin=function(){
+	if(!isset($_SESSION['tipoUsuario'])){
+		$app = \Slim\Slim::getInstance();
+        $app->flash('error', 'Login required');
+        $app->redirect('/login');
+	}
+};
+
+
 $app->get('/', function() use ($app) {
 	$app->render('main.html');
 })->name('inicio');
@@ -35,9 +45,16 @@ $app->post('/logearse', function() use ($app) {
 });
 
 
-$app->get('/adminPanel', function() use ($app) {
-	$app->render('admin.php');
+$app->get('/adminPanel',$admin, function() use ($app) {
+	$app->render('web/index.html');
 })->name('adminPanel');
+
+
+$app->get('/categorias',$admin, function() use ($app) {
+	$app->render('web/form_component.html');
+})->name('categorias');
+
+
 
 
 

@@ -46,11 +46,43 @@ $cadena=$dias[$dayPosc].",".$hoy['mday']." de ". $meses[$hoy['mon']]." del ".$ho
 				</ul>
 			</nav>
 		</aside>
-		<section class="columns medium-8"></section>
+		<section class="columns medium-10">
+			<div class="header">
+				<h2>Categorias</h2>
+			</div>
+			<div class="container">
+				
+			<div class="row">
+				<div class="columns medium-offset-10 medium-2 align-right">
+					<button class="button">Agregar Categoria</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns medium-10">
+					
+			<table>
+				<thead>
+					<tr>
+						<th>Categoria</th>
+						<th>Estatus</th>
+					</tr>
+				</thead>
+			</table>
+				</div>
+			</div>
+
+			<div class="formulario">
+				<form action="">
+					<input type="text" required placeholder="Categoria">
+				</form>
+			</div>
+		</div>
+		</section>
 	</div>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
  <script src="https://use.fontawesome.com/ff12b0c5d1.js"></script>
+ <script src="../assets/js/"></script>
 </body>
 </html>

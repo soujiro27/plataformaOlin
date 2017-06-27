@@ -1,6 +1,6 @@
 <?php 
 
-
+session_start();
 	class Login{
 
 		private $pdo = array();
@@ -11,7 +11,7 @@
 			$this->pdo[':nombre']=$data['nombre'];
 			$this->pdo['password']=$data['password'];
 			
-			$sql="Select tipo from usuarios where nombre=:nombre and password=:password";
+			$sql="Select tipo from Usuarios where nombre=:nombre and password=:password";
 			$tipo=$get->consultaRetornoPDO($sql,$this->pdo);
 			if(empty($tipo)){
 				$app->render('login.html');

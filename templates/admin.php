@@ -44,7 +44,7 @@ $cadena=$dias[$dayPosc].",".$hoy['mday']." de ". $meses[$hoy['mon']]." del ".$ho
 			<nav>
 				<ul>
 					<li><a href="#!"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a></li>
-					<li><a href="templates/categorias.php"><i class="fa fa-paperclip" aria-hidden="true"></i> Categorias</a></li>
+					<li><a href="/categorias"><i class="fa fa-paperclip" aria-hidden="true"></i> Categorias</a></li>
 					<li><a href="#!"><i class="fa fa-paperclip" aria-hidden="true"></i> SubCategorias</a></li>
 					<li><a href="#!"><i class="fa fa-bar-chart" aria-hidden="true"></i> Graficas</a></li>
 					<li><a href="#!"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar sesion</a></li>

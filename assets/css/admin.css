@@ -29,8 +29,19 @@ nav ul li a{
 }
 
 div.header{
-	background-color: #efefef;
+	background-color: #2d353c;
 	text-align: center;
-	color:#00AE8D;
+	color:#fff;
 	text-shadow: 2px 2px 2px #afafaf;
+}
+
+
+div.container
+{
+	background-color: #2d353c;
+	padding: .5em;
+}
+
+table th{
+	padding: 2px !important;
 }
