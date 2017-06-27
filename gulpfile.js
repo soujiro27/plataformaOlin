@@ -11,7 +11,7 @@ var buffer     = require('vinyl-buffer');
 
 
 gulp.task('build:js', function () {
-  return browserify("./dev/register/index.js")
+  return browserify("./dev/index.js")
   .transform("babelify", {presets: ["es2015"]})
   .bundle()
     .pipe(source('app.js'))

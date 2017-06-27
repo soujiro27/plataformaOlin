@@ -2,6 +2,9 @@
 require 'Slim/Slim.php';
 require 'app/models/insert.php';
 require 'app/controllers/login.php';
+require 'app/controllers/tables.php';
+require 'app/controllers/insert.php';
+require 'app/controllers/update.php';
 
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim(array(
@@ -13,7 +16,7 @@ $app = new \Slim\Slim(array(
 
 
 $admin=function(){
-	if(!isset($_SESSION['tipoUsuario'])){
+	if(!isset($_SESSION['tipoUsuario']) and !isset($_SESSION['idUsuario'])){
 		$app = \Slim\Slim::getInstance();
         $app->flash('error', 'Login required');
         $app->redirect('/login');
@@ -33,8 +36,8 @@ $app->get('/login', function() use ($app) {
 
 
 $app->post('/registrarUser', function() use ($app) {
-	$insert= new Insert();
-	$insert->insertaBd('Usuarios', $app->request->post());
+	$insert=new InsertController();
+	$insert->checkDataInsert('Usuarios',$app->request->post());
 });
 
 
@@ -51,13 +54,26 @@ $app->get('/adminPanel',$admin, function() use ($app) {
 
 
 $app->get('/categorias',$admin, function() use ($app) {
-	$app->render('web/form_component.html');
+	$app->render('web/categorias.html');
 })->name('categorias');
 
+$app->get('/table/:modulo',function($modulo) use ($app){
+	$controllersTabla=new Tables();
+	$controllersTabla->incio($modulo);
+});
+
+$app->post('/insert/:modulo',function($modulo) use ($app){
+	$insert=new InsertController();
+	$insert->checkDataInsert($modulo,$app->request->post());
+});
 
 
+$app->get('/getRegister/:modulo',function($modulo) use ($app){
+	
+	$update=new UpdateController();
+	$update->showRegister($modulo,$app->request->get());
 
-
+});	
 
 
 $app->run();

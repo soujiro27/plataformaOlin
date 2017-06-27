@@ -1,11 +1,11 @@
 <?php
-class Tables extends Rutas{
+class Tables{
 
-private $caracteres='select idCaracter,siglas, nombre,estatus from sia_CatCaracteres';
+private $caracteres='select idCategoria,nombre,estatus from categorias';
 
 public function incio($modulo){
 		$obtener= new Get();
-		if($modulo=='Caracteres'){$sql=$this->caracteres;}
+		if($modulo=='categorias'){$sql=$this->caracteres;}
 
 		$obtener->getTable($sql);
 }

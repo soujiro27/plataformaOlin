@@ -55,9 +55,9 @@ class Get{
 	public function getCombo($tabla,$campos,$where,$pdo){
 		$db=$this->conecta();
 		if($tabla=='auditorias'){
-			$sql="SELECT ".$campos." FROM sia_".$tabla." WHERE ".$where." AND clave<>'NULL' ";
+			$sql="SELECT ".$campos." FROM ".$tabla." WHERE ".$where." AND clave<>'NULL' ";
 		}else{
-			$sql="SELECT ".$campos." FROM sia_".$tabla." WHERE ".$where;
+			$sql="SELECT ".$campos." FROM ".$tabla." WHERE ".$where;
 		}
 		$datos=$this->consultaRetornoPDO($sql,$pdo);
 		echo json_encode($datos);

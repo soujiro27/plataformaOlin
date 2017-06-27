@@ -27,7 +27,6 @@ function datosUsuario(e){
 }
 
 function registerUsuario(data){
-	debugger
 	$.post({
 		url:'./registrarUser',
 		data:data,

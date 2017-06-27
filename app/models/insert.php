@@ -20,18 +20,7 @@ class Insert{
 		}
 
 	public function insertaBd($modulo,$datos){
-		//echo $modulo;
 		$db=$this->conecta();
-		/*--------------- funciones de comprobacion de registro duplicado--------------*/
-		$getData=new Get();
-		$duplicado=$getData->getDuplicado($modulo,$datos);
-		$res=count($duplicado);
-		if($res>0){
-			$salida['insert']='false';
-			echo json_encode($salida);
-		}
-		else
-		{
 		$datosInsert=new procesaDatosQuery();
 		$campos=$datosInsert->obtieneCamposInsert($datos);
 		$valores=$datosInsert->obtieneValoresQuery($datos);
@@ -42,9 +31,10 @@ class Insert{
 		$salida['insert']='true';
 		//echo "\nPDO::errorInfo():\n";
     	//print_r($dbQuery->errorInfo());
-		echo json_encode($salida);
+		return $salida;
 		}
-	}
+	
+	
 
 
 	public function update($modulo,$datos){
