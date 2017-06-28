@@ -62,8 +62,12 @@ module.exports = function () {
       $('form#categorias').submit(function (event) {
         event.preventDefault();
         var datosSend = $(this).serialize();
-        self.sendData(datosSend, 'insert', 'categorias').then(function (response) {
-          //self. successInsert(response)
+        self.sendData(datosSend, 'insert', 'Categorias').then(function (response) {
+          if (response.insert == 'true') {
+            location.href = '/categorias';
+          } else if (response.insert == 'false') {
+            alert("Error: Registro Duplicado");
+          }
         });
       });
     }
@@ -140,7 +144,7 @@ module.exports = function () {
         var data = {};
         data[campo] = id;
         $.get({
-          url: '/getRegister/categorias',
+          url: '/getRegister/Categorias',
           data: data,
           success: function success(data) {
             var json = JSON.parse(data);

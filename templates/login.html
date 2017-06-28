@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
 	<div class="row expanded">
-		<div class="columns medium-6 hide-for-small-only">
+		<div class="columns medium-6 hide-for-small-only circulo">
 			<h2>Olin</h2>
+			<img src="assets/img/login.png" alt="">
 			<p>Bienvenido a <strong>Olin Negocios</strong></p>
 			<p>Descubre una nueva manera de anunciar tus productos y servicios.</p>
 		</div>
-		<div class="columns small-10 small-offset-1 medium-5">
+		<div class="columns small-10 small-offset-1 medium-5 form">
+			<h4>Entra ahora</h4>
+			<p>Obten el control total de tus anuncios y de tus clientes.</p>
 			<form method="post" action="./logearse">
 				<input type="email" name="nombre" required placeholder="Correo Electronico">
 				<input type="password" name="password" required placeholder="Password">

@@ -40,7 +40,7 @@ module.exports=class Tabla{
       let data={}
       data[campo]=id
       $.get({
-        url:'/getRegister/categorias',
+        url:'/getRegister/Categorias',
         data:data,
         success:function(data){
           let json=JSON.parse(data);

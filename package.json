@@ -29,6 +29,7 @@
     "babelify-es6-polyfill": "^1.0.4",
     "empty-element": "^1.0.0",
     "empty-it": "^1.0.0",
+    "gulp": "^3.9.1",
     "jquery": "^3.2.1",
     "jquery-confirm": "^3.2.3",
     "jquery-ui-browserify": "^1.11.0-pre-seelio",

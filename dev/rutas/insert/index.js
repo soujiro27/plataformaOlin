@@ -22,6 +22,7 @@ module.exports=class RutasInsert{
     main.empty()
     main.html(template)
     this.cancelar()
+    
   }
 
   cancelar(){
@@ -38,9 +39,13 @@ getData(){
     $('form#categorias').submit(function(event) {
       event.preventDefault()
       let datosSend=$(this).serialize()
-      self.sendData(datosSend,'insert','categorias')
+      self.sendData(datosSend,'insert','Categorias')
       .then(response=>{ 
-        //self. successInsert(response)
+          if(response.insert=='true'){
+            location.href='/categorias';
+          }else if(response.insert=='false'){
+            alert("Error: Registro Duplicado")
+        }
       })
       
 
