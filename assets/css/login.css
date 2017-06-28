@@ -1,0 +1,39 @@
+html,body{
+	height: 100%;
+	width: 100%;
+}
+
+
+div.row
+{
+	height: 100%;
+}
+
+div.circulo{
+	height: 100%;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+div.form
+{
+	padding-top: 140px;
+	background-color: #fff;
+	height: 100%;
+}
+
+input[type=email],input[type=password]{
+	width: 70%;
+	border-color: #00AE8D;
+}
+
+h2{
+	color: #00AE8D;
+	font-size: 5em;
+	text-shadow: 3px 3px 5px #adadad
+}
+
+img
+{
+	width: 80%;
+}
