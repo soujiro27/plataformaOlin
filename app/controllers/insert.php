@@ -1,10 +1,9 @@
 <?php  
 
+require './../models/get.php';
+require './../models/insert.php';
 
 class InsertController{
-
-
-
 
 	public function checkDataInsert($modulo,$datos){
 		$getData=new Get();
@@ -12,11 +11,17 @@ class InsertController{
 		$duplicado=$getData->getDuplicado($modulo,$datos);
 		if(empty($duplicado)){
 			$res=$insert->insertaBd($modulo,$datos);
-			echo json_encode($res);
+			 if(empty($res['mysql'][2])){
+				 $insertResponse['success']='true';
+			 }
+			 else{
+				$insertResponse['error']=$res['mysql'][2];
+			 }
+			 echo json_encode($insertResponse);
 		}
 		else{
-			$salida['insert']='false';
-			echo json_encode($salida);
+			$insertResponse['error']='El correo ya se encuentra registrado';
+			echo json_encode($insertResponse);
 		}
 		
 	}

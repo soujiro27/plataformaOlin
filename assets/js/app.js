@@ -116,7 +116,7 @@ module.exports = function () {
     key: 'getTable',
     value: function getTable(tabla) {
       var get = new Promise(function (resolve, reject) {
-        $.get('/table/' + tabla, function (json, textStatus) {
+        $.get('/app/php/table' + tabla + '.php', function (json, textStatus) {
           resolve(JSON.parse(json));
         });
       });

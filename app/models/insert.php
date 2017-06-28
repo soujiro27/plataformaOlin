@@ -1,7 +1,6 @@
 <?php
 
-require 'app/controllers/procesaDatos.php';
-require 'app/models/get.php';
+require './../controllers/procesaDatos.php';
 
 
 class Insert{
@@ -28,10 +27,8 @@ class Insert{
 		$sql="INSERT INTO ".$modulo."(".$campos.") VALUES(".$valores.")";
 		$dbQuery = $db->prepare($sql);
 		$dbQuery->execute($pdo);
-		$salida['insert']='true';
-		//echo "\nPDO::errorInfo():\n";
-    	//print_r($dbQuery->errorInfo());
-		return $salida;
+		$resInsert['mysql']=$dbQuery->errorInfo();
+		return $resInsert;
 		}
 	
 	

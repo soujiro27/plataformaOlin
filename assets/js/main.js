@@ -56,8 +56,7 @@ function datosUsuario(e){
     let data={
       nombre:nombre,
       password:pass
-    }
-    console.log(data)
+    };
     registerUsuario(data);
   }
   else{
@@ -73,19 +72,25 @@ function datosUsuario(e){
 function registerUsuario(data){
   
   $.post({
-    url:"./registrarUser",
+    url:"./../../app/php/registraUser.php",
     data:data,
     success:function(data){
       let json=$.parseJSON(data);
-      if(json.insert=='false'){
-        $.alert({
+
+      $.each(json,function(index,value){
+        if(index=='error'){
+          $.alert({
             title: 'Error',
-            content: 'Ya hay un Correo registrado'
+            content: value
         });
-      }else{
+        }else{
           $('div.formulario').empty();
           $('div.formulario').html('<p class="black"> Tu registro ha sido Completado inicia sesion para empezar a disfruta de OLIN </p>');
-      }
+        }
+      })
+
+
+      
     }
   });
 }
