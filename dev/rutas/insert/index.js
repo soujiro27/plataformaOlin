@@ -29,7 +29,7 @@ module.exports=class RutasInsert{
     let self = this
     $('button#cancelar').click(function(event) {
       event.preventDefault()
-      location.href='/categorias';
+      location.href='/templates/web/categorias.php';
     });
   }
 
