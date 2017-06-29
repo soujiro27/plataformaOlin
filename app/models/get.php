@@ -1,6 +1,6 @@
 <?php
 
-
+require './../controllers/procesaDatos.php';
 
 
 class Get{

@@ -33,10 +33,11 @@ class procesaDatosQuery{
 				break;
 			}
 			$cont++;
-			$valores=$valores.$key.'=:'.$key.', ';
+			$valores=$valores.$key.'=:'.$key.',';
 		}
 
-		return $valores;
+		$sql=substr($valores,0,-1);
+		return $sql;
 	}
 
 

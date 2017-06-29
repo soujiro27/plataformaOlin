@@ -1,6 +1,6 @@
 <?php
 
-require './../controllers/procesaDatos.php';
+
 
 
 class Insert{
@@ -36,29 +36,17 @@ class Insert{
 
 	public function update($modulo,$datos){
 		$db=$this->conecta();
-		/*--------------- funciones de comprobacion de registro duplicado--------------*/
-		$getData=new Get();
-		$duplicado=$getData->getDuplicado($modulo,$datos);
-		$res=count($duplicado);
-		if($res>0){
-			$salida['insert']='false';
-			echo json_encode($salida);
-		}else{
 		$datosInsert=new procesaDatosQuery();
 		$valores=$datosInsert->obtieneValoresQueryUpdate($datos);
 		$where=$datosInsert->obtieneValoresWhereUpdate($datos);
 		$pdo=$datosInsert->obtieneArregloPdo($datos);
-		$sql="UPDATE sia_".$modulo." SET ".$valores."usrModificacion=:usrModificacion,fModificacion=getdate() WHERE ".$where;
-		//echo $sql;
+		$sql="UPDATE ".$modulo." SET ".$valores." WHERE ".$where;
 		$dbQuery = $db->prepare($sql);
-		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
-		//echo "\nPDO::errorInfo():\n";
-		//print_r($dbQuery->errorInfo());
-		$salida['insert']='true';
-		echo json_encode($salida);
+		$resInsert['mysql']=$dbQuery->errorInfo();
+		return $resInsert;
 		}
-	}
+	
 
 
 }

@@ -8,7 +8,7 @@ var el=yo`
         <input type="text" class="form-control" id="nombre" placeholder="Categoria" name="nombre">
     </div>
     
-    <button type="submit" class="btn btn-info">Submit</button>
+    <button type="submit" class="btn btn-info">Guardar Categoria</button>
     <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>
 </form>`;
     return el;

@@ -39,14 +39,16 @@ module.exports=class Tabla{
       let campo=$(this).data('nombre')
       let data={}
       data[campo]=id
+      data['tabla']='categorias'
       $.get({
-        url:'/getRegister/Categorias',
+        url:'/app/php/getRegister.php',
         data:data,
         success:function(data){
           let json=JSON.parse(data);
           let template=categorias(json[0])
           $('section.wrapper').empty().html(template)
-         
+          insert.cancelar();
+          insert.getData('update');
         }
       })
   })
@@ -55,7 +57,7 @@ module.exports=class Tabla{
   clickBtn(){
     $('button#agregar').click(function(event) {
        insert.rutas('categorias');
-       insert.getData();
+       insert.getData('insert');
     });
   }
 

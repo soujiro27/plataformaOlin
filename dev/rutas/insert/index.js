@@ -1,4 +1,5 @@
 require('babelify-es6-polyfill');
+const noty= require('noty');
 const $=require('jquery');
 const categorias=require('./../../templates/forms/insert/categorias.js');
 
@@ -34,18 +35,28 @@ module.exports=class RutasInsert{
   }
 
 
-getData(){
+getData(tipo){
     let self=this
     $('form#categorias').submit(function(event) {
       event.preventDefault()
       let datosSend=$(this).serialize()
-      self.sendData(datosSend,'insert','Categorias')
+      self.sendData(datosSend,tipo,'Categorias')
       .then(response=>{ 
-          if(response.insert=='true'){
-            location.href='/categorias';
-          }else if(response.insert=='false'){
-            alert("Error: Registro Duplicado")
+        $.each(response,function(index,value){
+        if(index=='error'){
+         new noty({
+            type: 'warning',
+            layout: 'center',
+            theme: 'metroui',
+            text: value,
+            timeout: 2000,
+            progressBar: true,
+          })
+        }else{
+          location.href="/templates/web/categorias.php";
         }
+          })
+
       })
       
 
@@ -56,7 +67,7 @@ getData(){
   sendData(datos,tipo,ruta){
     let post=new Promise((resolve,reject)=>{
       $.post({
-        url:'/'+tipo+'/'+ruta,
+        url:'/app/php/'+tipo+'categorias.php',
         data:datos,
         success:function(json){
           let data=JSON.parse(json)
