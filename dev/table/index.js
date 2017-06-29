@@ -12,7 +12,7 @@ module.exports=class Tabla{
 
   getTable(tabla){
       let get=new Promise((resolve,reject)=>{
-        $.get('/app/php/table'+tabla+'.php',function(json, textStatus) {
+        $.get('/app/controllers/tables.php',function(json, textStatus) {
             resolve(JSON.parse(json));
         });
       })

@@ -1,4 +1,6 @@
 <?php
+require './../models/get.php';
+
 class Tables{
 
 private $caracteres='select idCategoria,nombre,estatus from Categorias';
@@ -12,8 +14,12 @@ public function incio($modulo){
 
 
 
+
+
 }
 
+$tabla=new Tables();
+$tabla->incio('categorias');
 
 
  ?>
