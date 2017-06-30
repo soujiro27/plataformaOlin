@@ -142,7 +142,7 @@
                     </a>
                     <ul class="sub">
 						<li><a href="./categorias.php">Categorias</a></li>
-						<li><a href="glyphicon.html">Subcategorias</a></li>
+						<li><a href="./subcategorias.php">Subcategorias</a></li>
                         <li><a href="grids.html">Suscripciones</a></li>
                     </ul>
                 </li>

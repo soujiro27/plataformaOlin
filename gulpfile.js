@@ -16,7 +16,7 @@ gulp.task('build:js', function () {
   .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(rename('categorias.js'))
+    .pipe(rename('app.js'))
     .pipe(gulp.dest('assets/js/'));
 });
 

@@ -2,7 +2,7 @@ require('babelify-es6-polyfill');
 const noty= require('noty');
 const $=require('jquery');
 const categorias=require('./../../templates/forms/insert/categorias.js');
-
+const subcategorias=require('./../../templates/forms/insert/subcategorias.js');
 
 
 
@@ -12,35 +12,43 @@ module.exports=class RutasInsert{
     var self=this
     let template;
     if(ruta=='categorias'){template=categorias}
-    self.renderForm(template);
+    if(ruta=='subcategorias'){
+      self.getComboCategorias()
+      .then(response=>{
+        template=subcategorias(response)
+        self.renderForm(template,ruta);
+        self.getData(ruta,'insert')
+      });
+    }
+    self.renderForm(template,ruta);
     
   }
 
 
 
-  renderForm(template){
+  renderForm(template,ruta){
     let main=$('section.wrapper')
     main.empty()
     main.html(template)
-    this.cancelar()
+    this.cancelar(ruta)
     
   }
 
-  cancelar(){
+  cancelar(ruta){
     let self = this
     $('button#cancelar').click(function(event) {
       event.preventDefault()
-      location.href='/templates/web/categorias.php';
+      location.href='/templates/web/'+ruta+'.php';
     });
   }
 
 
-getData(tipo){
+getData(ruta,tipo){
     let self=this
-    $('form#categorias').submit(function(event) {
+    $('form#'+ruta).submit(function(event) {
       event.preventDefault()
-      let datosSend=$(this).serialize()
-      self.sendData(datosSend,tipo,'Categorias')
+      let datosSend=$(this).serialize()+'&'+'modulo='+ruta
+      self.sendData(datosSend,tipo,ruta)
       .then(response=>{ 
         $.each(response,function(index,value){
         if(index=='error'){
@@ -53,7 +61,7 @@ getData(tipo){
             progressBar: true,
           })
         }else{
-          location.href="/templates/web/categorias.php";
+          location.href="/templates/web/"+ruta+".php";
         }
           })
 
@@ -67,7 +75,7 @@ getData(tipo){
   sendData(datos,tipo,ruta){
     let post=new Promise((resolve,reject)=>{
       $.post({
-        url:'/app/php/'+tipo+'categorias.php',
+        url:'/app/php/'+tipo+ruta+'.php',
         data:datos,
         success:function(json){
           let data=JSON.parse(json)
@@ -76,6 +84,26 @@ getData(tipo){
       });
     })
     return post
+  }
+
+
+
+  getComboCategorias(){
+     let post=new Promise((resolve,reject)=>{
+     $.get({
+        url:'/app/php/getcombo.php',
+         data:{
+        modulo:'categorias',
+        estatus:'ACTIVO'
+        },
+        success:function(data){
+           let json=JSON.parse(data);
+           resolve(json)
+        }
+      })
+    })
+    return post
+
   }
 
 

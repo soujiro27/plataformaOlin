@@ -131,7 +131,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="./admin.php">
+                    <a class="active" href="/adminPanel">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
@@ -144,7 +144,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="/categorias">Categorias</a></li>
-                        <li><a href="./subcategorias.php">Subcategorias</a></li>
+                        <li><a href="glyphicon.html">Subcategorias</a></li>
                         <li><a href="grids.html">Suscripciones</a></li>
                     </ul>
                 </li>
