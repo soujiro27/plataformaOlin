@@ -6,8 +6,14 @@ var $ = require('jquery');
 var table = require('./table');
 var page = require('page');
 
+var url = location.pathname;
+var urlPos = url.lastIndexOf('/');
+url = url.substring(urlPos + 1);
+urlPos = url.lastIndexOf('.');
+url = url.substring(0, urlPos);
+console.log(url);
 var tabla = new table();
-tabla.drawTable('categorias');
+tabla.drawTable(url);
 //require('./rutas/update');
 
 page();
